@@ -5,14 +5,14 @@ on:
 
 jobs:
   build_and_publish:
-  runs-on: ubuntu-latest
-  container:
-      image: fedora:latest
-  steps:
-    - uses: actions/checkout@v4
-    - name: Build and publish the image
-      run: |
-        podman login --username JakubSzukala --password ${{ secrets.OFFICE_OS_TOKEN }} ghcr.io
-        podman build -t ghcr.io/jakubszukala/ghcr-hello-world:latest .
-        podman push ghcr.io/jakubszukala/ghcr-hello-world:latest
+    runs-on: ubuntu-latest
+    container:
+        image: fedora:latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build and publish the image
+        run: |
+          podman login --username JakubSzukala --password ${{ secrets.OFFICE_OS_TOKEN }} ghcr.io
+          podman build -t ghcr.io/jakubszukala/ghcr-hello-world:latest .
+          podman push ghcr.io/jakubszukala/ghcr-hello-world:latest
 
