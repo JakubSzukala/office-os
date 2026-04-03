@@ -1,0 +1,22 @@
+```bash
+[Unit]
+Description=Install flatpaks on first boot
+
+ConditionPathExists=!/var/lib/flatpak-install-stamp
+
+Wants=network-online.target
+
+After=network-online.target
+
+[Service]
+
+Type=oneshot
+
+RemainAfterExit=yes
+
+ExecStartPre=/usr/bin/flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+ExecStart=/usr/bin/flatpak install -y flathub org.libreoffice.LibreOffice
+ExecStartPost=/usr/bin/touch /var/lib/flatpak-setup-done
+
+[Install]
+WantedBy=multi-user.target
