@@ -6,8 +6,6 @@ on:
 jobs:
   build_and_publish:
     runs-on: ubuntu-latest
-    container:
-        image: fedora:latest
     steps:
       - uses: actions/checkout@v4
       - name: Build and publish the image
