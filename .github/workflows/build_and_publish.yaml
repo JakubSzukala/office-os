@@ -10,7 +10,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Build and publish the image
         run: |
-          podman login --username JakubSzukala --password ${{ secrets.OFFICE_OS_TOKEN }} ghcr.io
+          echo "${{ secrets.OFFICE_OS_TOKEN }}" | podman login --username JakubSzukala --password-stdin ghcr.io
           podman build -t ghcr.io/jakubszukala/ghcr-hello-world:latest .
           podman push ghcr.io/jakubszukala/ghcr-hello-world:latest
 
