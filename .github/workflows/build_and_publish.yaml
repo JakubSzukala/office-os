@@ -12,6 +12,6 @@ jobs:
       - name: Build and publish the image
         run: |
           echo "${{ secrets.OFFICE_OS_TOKEN }}" | podman login --username JakubSzukala --password-stdin ghcr.io
-          podman build -t ghcr.io/jakubszukala/ghcr-hello-world:latest .
-          podman push ghcr.io/jakubszukala/ghcr-hello-world:latest
+          podman build -t ghcr.io/jakubszukala/office-os:latest .
+          podman push ghcr.io/jakubszukala/office-os:latest
 
