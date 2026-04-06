@@ -1,16 +1,12 @@
 name: Build and publish base image
 
 on:
-  workflow_dispatch:
-      inputs:
-        debug_mode:
-          description: 'Run in debug mode'
-          required: true
-          default: 'true'
+  push
 
 jobs:
   build_and_publish:
     runs-on: ubuntu-latest
+    environment: office-linux-actions
     steps:
       - uses: actions/checkout@v4
       - name: Build and publish the image
