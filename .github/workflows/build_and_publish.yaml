@@ -20,6 +20,7 @@ jobs:
       - name: Build .iso image
         run: |
           mkdir -p ./output
+          sudo podman pull ghcr.io/jakubszukala/office-os:latest
           sudo podman run \
             --rm \
             --privileged \
